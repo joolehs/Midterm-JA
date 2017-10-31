@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app class="no-js" lang="en" dir="ltr">
+<html ng-app ng-app="todoApp" lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="css/content.css">
     <link rel="stylesheet" href="../css/footer.css">
     <script src="../js/vendor/angular.js"></script>
+    <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.css">
+    <script src="../js/todo.js"></script>
+    <link rel="stylesheet" href="../css/todo.css">
   </head>
   <body>
 <!-- Begin Nav -->
@@ -50,12 +53,30 @@
      <hr>
      <h1>Hello {{yourName}}!</h1>
    </div>
+   <h2>To do</h2>
+    <div ng-controller="TodoListController as todoList">
+      <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+      [ <a href="" ng-click="todoList.archive()">archive</a> ]
+      <ul class="unstyled">
+        <li ng-repeat="todo in todoList.todos">
+          <label class="checkbox">
+            <input type="checkbox" ng-model="todo.done">
+            <span class="done-{{todo.done}}">{{todo.text}}</span>
+          </label>
+        </li>
+      </ul>
+      <form ng-submit="todoList.addTodo()">
+        <input type="text" ng-model="todoList.todoText"  size="30"
+               placeholder="add new todo here">
+        <input class="btn-primary" type="submit" value="add">
+      </form>
+    </div>
 <!-- End Content -->
 
 <!-- Begin Footer -->
 <footer class="marketing-site-footer">
-  <div class="row medium-unstack">
-    <div class="medium-4 columns">
+  <div class="grid-x grid-padding-x">
+    <div class="medium-4 cell">
       <h4 class="marketing-site-footer-name">Yeti Snowcone</h4>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita dolorem accusantium architecto id quidem, itaque nesciunt quam ducimus atque.</p>
       <ul class="menu marketing-site-footer-menu-social simple">
@@ -64,7 +85,7 @@
          <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
       </ul>
     </div>
-    <div class="medium-4 columns">
+    <div class="medium-4 cell">
        <h4 class="marketing-site-footer-title">Contact Info</h4>
       <div class="marketing-site-footer-block">
         <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -79,25 +100,25 @@
         <p>yetirules@fakeemail.com</p>
       </div>
     </div>
-    <div class="medium-4 columns">
+    <div class="large-4 cell">
       <h4 class="marketing-site-footer-title">Instagram</h4>
-      <div class="row small-up-3">
-        <div class="column column-block">
+      <div class="grid-x grid-padding-y">
+        <div class="large-4 medium-6 small-12 cell">
           <img src="https://placehold.it/75" alt="" />
         </div>
-        <div class="column column-block">
+        <div class="large-4 medium-6 small-12 cell">
           <img src="https://placehold.it/75" alt="" />
         </div>
-        <div class="column column-block">
+        <div class="large-4 medium-6 small-12 cell">
           <img src="https://placehold.it/75" alt="" />
         </div>
-        <div class="column column-block">
+        <div class="large-4 medium-6 small-12 cell">
           <img src="https://placehold.it/75" alt="" />
         </div>
-        <div class="column column-block">
+        <div class="large-4 medium-6 small-12 cell">
           <img src="https://placehold.it/75" alt="" />
         </div>
-        <div class="column column-block">
+        <div class="large-4 medium-6 small-12 cell">
           <img src="https://placehold.it/75" alt="" />
         </div>
       </div>
@@ -110,12 +131,12 @@
       </div>
       <div class="column">
         <ul class="menu marketing-site-footer-bottom-links">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../about/index.html">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="../works/index.html">Works</a></li>
-          <li><a href="../news/index.html">News</a></li>
-          <li><a href="../contact/index.html">Contact</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="about/index.html">About</a></li>
+          <li><a href="services/index.html">Services</a></li>
+          <li><a href="works/index.html">Works</a></li>
+          <li><a href="news/index.html">News</a></li>
+          <li><a href="contact/index.html">Contact</a></li>
         </ul>
       </div>
     </div>
