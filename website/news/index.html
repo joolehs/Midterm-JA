@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app ng-app class="no-js" lang="en" dir="ltr">
+<html ng-app ng-app="todoApp" lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -68,7 +68,7 @@
       <form ng-submit="todoList.addTodo()">
         <input type="text" ng-model="todoList.todoText"  size="30"
                placeholder="add new todo here">
-        <input class="btn-primary" type="submit" value="add">
+        <input class="button" type="submit" value="add">
       </form>
     </div>
 <!-- End Content -->
